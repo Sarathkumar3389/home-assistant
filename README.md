@@ -99,6 +99,10 @@ actions:
       entity_id: input_boolean.relay_1_lockout
     action: input_boolean.turn_on
     data: {}
+  - target:
+      entity_id: input_boolean.relay_1_lockout_manual
+    action: input_boolean.turn_on
+    data: {}
   - delay: "00:00:05"
   - target:
       entity_id: switch.relay_1
@@ -110,6 +114,7 @@ actions:
     action: input_boolean.turn_off
     data: {}
 mode: restart
+
 
 ```
 
