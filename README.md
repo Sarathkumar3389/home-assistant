@@ -95,14 +95,14 @@ actions:
       entity_id: switch.relay_1
     action: switch.turn_on
     data: {}
+  - target:
+      entity_id: input_boolean.relay_1_lockout
+    action: input_boolean.turn_on
+    data: {}
   - delay: "00:00:05"
   - target:
       entity_id: switch.relay_1
     action: switch.turn_off
-    data: {}
-  - target:
-      entity_id: input_boolean.relay_1_lockout
-    action: input_boolean.turn_on
     data: {}
   - delay: "00:00:05"
   - target:
