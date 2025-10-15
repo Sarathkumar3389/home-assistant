@@ -592,7 +592,8 @@ create_frigate_config() {
 
   CONFIG_FILE="$CONFIG_FOLDER/config.yml"
 
-  HWACCEL_ARGS="vaapi"
+  # HWACCEL_ARGS="vaapi"
+  HWACCEL_ARGS="-hwaccel vaapi -hwaccel_device /dev/dri/renderD128"
   if [ "$USE_GPU" = true ]; then
     HWACCEL_ARGS="preset-nvidia"
   fi
@@ -798,7 +799,6 @@ cameras:
         - path: rtsp://admin:Sarath1234@192.168.0.200:554/cam/realmonitor?channel=1&subtype=0
           input_args: preset-rtsp-restream
           roles:
-            - record
             - detect
       output_args:
         record: preset-record-generic-audio-aac
@@ -816,14 +816,14 @@ detectors:
 $detector_section
 EOF
 
-  if [ "$USE_CORAL" = true ]; then
-    cat <<EOF >> "$CONFIG_FILE"
-  coral2:
-    type: edgetpu
-    device: usb:1
-EOF
-    info_msg "Added Coral detectors."
-  fi
+#   if [ "$USE_CORAL" = true ]; then
+#     cat <<EOF >> "$CONFIG_FILE"
+#   coral2:
+#     type: edgetpu
+#     device: usb:1
+# EOF
+#     info_msg "Added Coral detectors."
+#   fi
 
   success_msg "Frigate config.yml created at $CONFIG_FILE"
 }
