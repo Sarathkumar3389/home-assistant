@@ -1,3 +1,12 @@
+# General Scripts
+# In order to avoid having to type your git password multiple times, you may set
+git config --global credential.helper 'cache --timeout=3600'
+
+# or, as we work with tokens, you can just go for permanent storage
+git config --global credential.helper store
+
+
+
 # Home-assistant
 My Home assistant 
 
