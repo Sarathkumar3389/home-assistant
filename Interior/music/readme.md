@@ -11,3 +11,10 @@ sudo nano /etc/samba/smb.conf
    force user = sarathkumar
 
 sudo systemctl restart smbd
+
+## MPD config
+sudo nano /etc/mpd.conf
+
+
+
+
