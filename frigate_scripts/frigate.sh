@@ -761,7 +761,6 @@ objects:
     - car
     - bicycle
     - motorcycle
-    - bus
     - cat
     - dog
     - horse
