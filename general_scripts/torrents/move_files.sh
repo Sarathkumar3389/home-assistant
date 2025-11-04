@@ -41,3 +41,9 @@ echo "✅ Copy complete!"
 
 echo "--------------- remove duplicate .torrent files ---------------"
 # ./removeduplicate.sh
+
+# Find and remove empty directories *inside* the given directory,
+# but do NOT delete the directory itself
+find "$SRC" -mindepth 1 -type d -empty -delete
+
+echo "All empty folders inside '$SRC' have been removed."
