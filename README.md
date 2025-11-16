@@ -127,3 +127,31 @@ mode: restart
 
 ```
 
+## HA Issue
+1. Webterminal add not starting
+ - in Configuration username and PW has to be set to start it
+2. SD card logging issue
+  - set in Configuration.yaml
+    logging:
+      deafult:error 
+
+## Frigate Add-On
+### Adding frigate stream
+- via HACs 
+- Add Frigate url : http://192.168.0.10:5000/
+- no username and PW
+### Install MQTT
+- Add-On store 
+- Download and add integration
+```
+logins:
+  - username: mqtt
+    password: "yourpassword"
+require_certificate: false
+certfile: fullchain.pem
+keyfile: privkey.pem
+customize:
+  active: false
+  folder: mosquitto
+
+```
