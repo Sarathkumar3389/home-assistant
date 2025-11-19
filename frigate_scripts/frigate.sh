@@ -592,7 +592,7 @@ create_frigate_config() {
 
   CONFIG_FILE="$CONFIG_FOLDER/config.yml"
 
-  HWACCEL_ARGS="-hwaccel vaapi -hwaccel_device /dev/dri/renderD128"
+  HWACCEL_ARGS="[]"
   if [ "$USE_GPU" = true ]; then
     HWACCEL_ARGS="preset-nvidia"
   fi
