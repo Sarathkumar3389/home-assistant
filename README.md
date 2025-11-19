@@ -155,3 +155,17 @@ customize:
   folder: mosquitto
 
 ```
+
+### CCTV cards
+```
+type: custom:frigate-card
+frigate_url: http://192.168.0.10:5000/
+camera_entity: camera.balcon
+live:
+  preload: true
+media_viewer:
+  transition: slide
+cameras:
+  - camera_entity: camera.balcon
+
+```
