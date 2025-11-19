@@ -348,8 +348,8 @@ get_media_folder() {
   load_configuration
 
   if [ "$USE_USB_DRIVE" = true ]; then
-    section_header "Configuring cctv Folder"
-    info_msg "External USB drive selected. The path will be set to /mnt/usb/cctv"
+    section_header "Configuring Media Folder"
+    info_msg "External USB drive selected. The path will be set to /mnt/usb/media"
     # The docker run command will handle this path directly.
     return
   fi
@@ -592,7 +592,6 @@ create_frigate_config() {
 
   CONFIG_FILE="$CONFIG_FOLDER/config.yml"
 
-  # HWACCEL_ARGS="vaapi"
   HWACCEL_ARGS="-hwaccel vaapi -hwaccel_device /dev/dri/renderD128"
   if [ "$USE_GPU" = true ]; then
     HWACCEL_ARGS="preset-nvidia"
@@ -761,6 +760,7 @@ objects:
     - car
     - bicycle
     - motorcycle
+    - bus
     - cat
     - dog
     - horse
@@ -795,13 +795,15 @@ cameras:
       order: 1
     ffmpeg:
       inputs:
-        - path: rtsp://admin:Sarath1234@192.168.0.200:554/cam/realmonitor?channel=1&subtype=0
-          input_args: preset-rtsp-restream
+        - path: rtsp://admin:Sarath1234@192.168.0.200:554/cam/realmonitor?channel=1&subtype=1
+          input_args: preset-rtsp-generic
           roles:
             - detect
+            - audio
       output_args:
         record: preset-record-generic-audio-aac
     detect:
+      enabled: true
       width: 640
       height: 360
       fps: 10
@@ -815,14 +817,14 @@ detectors:
 $detector_section
 EOF
 
-#   if [ "$USE_CORAL" = true ]; then
-#     cat <<EOF >> "$CONFIG_FILE"
-#   coral2:
-#     type: edgetpu
-#     device: usb:1
-# EOF
-#     info_msg "Added Coral detectors."
-#   fi
+  if [ "$USE_CORAL" = true ]; then
+    cat <<EOF >> "$CONFIG_FILE"
+  # coral2:
+  #   type: edgetpu
+  #   device: usb:1
+EOF
+    info_msg "Added Coral detectors."
+  fi
 
   success_msg "Frigate config.yml created at $CONFIG_FILE"
 }
@@ -865,13 +867,13 @@ start_frigate_container() {
 
   # Conditionally add media folder volume mount
   if [ "$USE_USB_DRIVE" = true ]; then
-      info_msg "Ensuring USB cctv directory exists at /mnt/usb/cctv"
+      info_msg "Ensuring USB media directory exists at /mnt/usb/cctv"
       mkdir -p "/mnt/usb/cctv" || { error_msg "Could not create /mnt/usb/cctv. Check permissions."; exit 1; }
       DOCKER_RUN_COMMAND="$DOCKER_RUN_COMMAND \
     -v \"/mnt/usb/cctv:/cctv:rw\""
   else
       DOCKER_RUN_COMMAND="$DOCKER_RUN_COMMAND \
-    -v \"$MEDIA_FOLDER:/cctv/frigate:rw\""
+    -v \"$MEDIA_FOLDER:/media/frigate:rw\""
   fi
 
   # Add remaining docker run arguments
@@ -970,3 +972,4 @@ main() {
 
 # Run the main function with the provided command-line argument
 main "$1"
+
