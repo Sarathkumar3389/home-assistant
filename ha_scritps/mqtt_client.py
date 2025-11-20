@@ -6,8 +6,8 @@ GPIO.setmode(GPIO.BCM)
 PIN = 17
 GPIO.setup(PIN, GPIO.OUT, initial=GPIO.HIGH)
 
-BROKER = "192.168.0.18"
-TOPIC_CMD = "home/relaytest"
+BROKER = "192.168.0.9" # IP Address of HA Server
+TOPIC_CMD = "home/relaytest" # MQTT device configured in HA 
 TOPIC_STATE = "home/relaytest/state"
 USERNAME = "sarathkumar"
 PASSWORD = "9655514937"
