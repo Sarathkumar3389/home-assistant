@@ -7,8 +7,8 @@ PIN = 17
 GPIO.setup(PIN, GPIO.OUT, initial=GPIO.HIGH)
 
 BROKER = "192.168.0.18"
-TOPIC_CMD = "home/relay1"
-TOPIC_STATE = "home/relay1/state"
+TOPIC_CMD = "home/relaytest"
+TOPIC_STATE = "home/relaytest/state"
 USERNAME = "sarathkumar"
 PASSWORD = "9655514937"
 
