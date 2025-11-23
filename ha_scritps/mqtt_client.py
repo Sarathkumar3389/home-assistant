@@ -4,7 +4,7 @@ import threading
 
 GPIO.setmode(GPIO.BCM)
 PIN = 17
-GPIO.setup(PIN, GPIO.OUT, initial=GPIO.HIGH)
+GPIO.setup(PIN, GPIO.OUT, initial=GPIO.LOW)
 
 BROKER = "192.168.0.9" # IP Address of HA Server
 TOPIC_CMD = "home/relaytest" # MQTT device configured in HA 

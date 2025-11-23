@@ -74,49 +74,83 @@ python3 /home/sarathkumar/home-assistant/ha_scritps/mqtt_client.py
    - Create Toggel -> name it "relay01"
       -  For actual ON/OFF switch for relay , ``` input_boolean.relay01 ```
 
-### To Turn On and Auto-Off and Manual lock
+### To Turn ON and Auto-Off and Manual lock
    - create this via the UI (“Settings → Automations & Scenes → + Create Automation → From YAML”) or directly add to your automations.yaml file:
 
     ```
       alias: Relay 1 Auto-Off and Lockout
-    description: Turns off relay_1 after 5 min and prevents reactivation for 2 min
-    triggers:
-      - entity_id:
-          - input_boolean.relay01
-        to: "on"
-        trigger: state
-    conditions:
-      - condition: state
-        entity_id: input_boolean.relay_1_lockout
-        state: "off"
-      - condition: state
-        entity_id: input_boolean.relay_1_lockout_manual
-        state: "off"
-    actions:
-      - target:
-          entity_id: switch.relay_1
-        action: switch.turn_on
-        data: {}
-      - target:
-          entity_id: input_boolean.relay_1_lockout
-        action: input_boolean.turn_on
-        data: {}
-      - target:
-          entity_id: input_boolean.relay_1_lockout_manual
-        action: input_boolean.turn_on
-        data: {}
-      - delay: "00:00:05"
-      - target:
-          entity_id: switch.relay_1
-        action: switch.turn_off
-        data: {}
-      - delay: "00:00:05"
-      - target:
-          entity_id: input_boolean.relay_1_lockout
-        action: input_boolean.turn_off
-        data: {}
-    mode: restart
+description: Turns off relay_1 after 5 min and prevents reactivation for 2 min
+triggers:
+  - entity_id:
+      - input_boolean.relay01
+    to:
+      - "on"
+    trigger: state
+    from:
+      - "off"
+conditions:
+  - condition: state
+    entity_id: input_boolean.relay_1_lockout
+    state: "off"
+  - condition: state
+    entity_id: input_boolean.relay_1_lockout_manual
+    state:
+      - "off"
+actions:
+  - target:
+      entity_id: switch.relay_test_relay_test
+    action: switch.turn_on
+    data: {}
+  - target:
+      entity_id: input_boolean.relay_1_lockout
+    action: input_boolean.turn_on
+    data: {}
+    enabled: true
+  - target:
+      entity_id: input_boolean.relay_1_lockout_manual
+    action: input_boolean.turn_on
+    data: {}
+  - delay: "00:00:05"
+  - target:
+      entity_id: switch.relay_test_relay_test
+    action: switch.turn_off
+    data: {}
+  - action: input_boolean.turn_off
+    target:
+      entity_id:
+        - input_boolean.relay01
+    data: {}
+  - delay: "00:00:05"
+  - target:
+      entity_id: input_boolean.relay_1_lockout
+    action: input_boolean.turn_off
+    data: {}
+mode: restart
+
     ```
+
+### To Turn OFF Manually
+```
+alias: Relay Test - Manual OFF
+description: Turns off relay_1 after 5 min and prevents reactivation for 2 min
+triggers:
+  - entity_id:
+      - input_boolean.relay01
+    to:
+      - "off"
+    trigger: state
+    from:
+      - "on"
+conditions: []
+actions:
+  - action: switch.turn_off
+    target:
+      entity_id:
+        - switch.relay_test_relay_test
+    data: {}
+mode: restart
+
+```
 
 ## HA Issue
 1. Webterminal add not starting
