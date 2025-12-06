@@ -1,6 +1,14 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
+// ----- GPIO PINS -----
+#define GPIO2_PIN   2
+#define GPIO3_PIN   3
+#define GPIO12_PIN  12
+#define GPIO13_PIN  13
+#define GPIO14_PIN  14
+#define GPIO15_PIN  15
+
 //------ ESP8622 HWs -- While programming to be Changed 
 //1. ESP8622 - Test
 int ip_address_test = 50;
@@ -35,11 +43,8 @@ const char* password = "9655514937";
 const char* mqtt_server = "192.168.0.9";
 const int mqtt_port = 1883;
 const char* mqtt_user = "sarathkumar";
-const char* mqtt_pass = "9655514937
+const char* mqtt_pass = "9655514937";
 
-// Relay pins
-int relayPins[] = {D1, D2, D5, D6};
-int relayCount = sizeof(relayPins) / sizeof(relayPins[0]);
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -53,19 +58,39 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
   Serial.printf("MQTT → Topic: %s | Message: %s\n", t.c_str(), msg.c_str());
 
-  // Only accept the main command topic
   if (t != topic_cmd) return;
 
-  // Control built-in LED
-  if (msg == "ON") {
-    digitalWrite(LED_BUILTIN, LOW);   // LED ON
-  } else if (msg == "OFF") {
-    digitalWrite(LED_BUILTIN, HIGH);  // LED OFF
+  // ----- Built-in LED -----
+  if (msg == "LED_ON") {
+    digitalWrite(LED_BUILTIN, LOW);
+  } 
+  else if (msg == "LED_OFF") {
+    digitalWrite(LED_BUILTIN, HIGH);
   }
 
-  // Publish state back
+  // ----- GPIO CONTROL -----
+  else if (msg == "GPIO2_ON") digitalWrite(GPIO2_PIN, HIGH);
+  else if (msg == "GPIO2_OFF") digitalWrite(GPIO2_PIN, LOW);
+
+  else if (msg == "GPIO3_ON") digitalWrite(GPIO3_PIN, HIGH);
+  else if (msg == "GPIO3_OFF") digitalWrite(GPIO3_PIN, LOW);
+
+  else if (msg == "GPIO12_ON") digitalWrite(GPIO12_PIN, HIGH);
+  else if (msg == "GPIO12_OFF") digitalWrite(GPIO12_PIN, LOW);
+
+  else if (msg == "GPIO13_ON") digitalWrite(GPIO13_PIN, HIGH);
+  else if (msg == "GPIO13_OFF") digitalWrite(GPIO13_PIN, LOW);
+
+  else if (msg == "GPIO14_ON") digitalWrite(GPIO14_PIN, HIGH);
+  else if (msg == "GPIO14_OFF") digitalWrite(GPIO14_PIN, LOW);
+
+  else if (msg == "GPIO15_ON") digitalWrite(GPIO15_PIN, HIGH);
+  else if (msg == "GPIO15_OFF") digitalWrite(GPIO15_PIN, LOW);
+
+  // Publish received command as state
   client.publish(topic_state, msg.c_str(), true);
 }
+
 
 // --------------------------------------------------------------------
 
@@ -99,11 +124,22 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);  // LED initially OFF
 
-  // Relay pins
-  for (int i = 0; i < relayCount; i++) {
-    pinMode(relayPins[i], OUTPUT);
-    digitalWrite(relayPins[i], LOW);
-  }
+    // Set GPIOs as OUTPUT
+  pinMode(GPIO2_PIN, OUTPUT);
+  pinMode(GPIO3_PIN, OUTPUT);
+  pinMode(GPIO12_PIN, OUTPUT);
+  pinMode(GPIO13_PIN, OUTPUT);
+  pinMode(GPIO14_PIN, OUTPUT);
+  pinMode(GPIO15_PIN, OUTPUT);
+
+  // Default OFF
+  digitalWrite(GPIO2_PIN, LOW);
+  digitalWrite(GPIO3_PIN, LOW);
+  digitalWrite(GPIO12_PIN, LOW);
+  digitalWrite(GPIO13_PIN, LOW);
+  digitalWrite(GPIO14_PIN, LOW);
+  digitalWrite(GPIO15_PIN, LOW);
+
 
   // Static IP
   WiFi.config(local_IP, gateway, subnet, dns);
