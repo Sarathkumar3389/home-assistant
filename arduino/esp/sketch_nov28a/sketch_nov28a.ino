@@ -1,12 +1,32 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
+//------ ESP8622 HWs -- While programming to be Changed 
+//1. ESP8622 - Test
+int ip_address_test = 50;
+const char* topic_cmd_test   = "home/esp/esp8266_test";    // HA → ESP
+const char* topic_state_test = "home/esp/esp8266_test/state";  // ESP → HA
+//2. ESP8622 - Motor
+int ip_address_motor = 51;
+const char* topic_cmd_motor   = "home/esp/esp8266_motor";    // HA → ESP
+const char* topic_state_motor = "home/esp/esp8266_motor/state";  // ESP → HA
+//1. ESP8622 - TV
+int ip_address_tv = 52;
+const char* topic_cmd_tv = "home/esp/esp8266_tv";    // HA → ESP
+const char* topic_state_tv = "home/esp/esp8266_tv/state";  // ESP → HA
+
+
 // ----- WiFi -----
 // Static IP details
-IPAddress local_IP(192, 168, 0, 50);
+IPAddress local_IP(192, 168, 0, ip_address_motor); 
 IPAddress gateway(192, 168, 0, 1);
 IPAddress subnet(255, 255, 255, 0);
 IPAddress dns(8, 8, 8, 8);
+
+// Topics used by HA
+const char* topic_cmd   = topic_cmd_motor;
+const char* topic_state = topic_state_motor;
+
 
 const char* ssid = "VenbaACT";
 const char* password = "9655514937";
@@ -15,11 +35,7 @@ const char* password = "9655514937";
 const char* mqtt_server = "192.168.0.9";
 const int mqtt_port = 1883;
 const char* mqtt_user = "sarathkumar";
-const char* mqtt_pass = "9655514937";
-
-// Topics used by HA
-const char* topic_cmd   = "home/esp/esp8266_1";        // HA → ESP
-const char* topic_state = "home/esp/esp8266_1/state";  // ESP → HA
+const char* mqtt_pass = "9655514937
 
 // Relay pins
 int relayPins[] = {D1, D2, D5, D6};

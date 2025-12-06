@@ -219,3 +219,14 @@ view:
   Settings → Devices & Services → Services → search “notify”
 
 
+# HW IP Information
+
+192.168.0.10 - macbook - Frigate
+192.168.0.11 - RPi3 - Speaker
+192.168.0.12 - RPi5 - desktop
+192.168.0.16 - RPi4 - HMI Display
+192.168.0.18 - RPi5 - HA server
+192.168.0.50 - ESPWIFI-test
+192.168.0.51 - ESPWIDI - Motor 
+
+

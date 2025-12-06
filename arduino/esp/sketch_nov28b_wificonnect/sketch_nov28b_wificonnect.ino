@@ -1,13 +1,10 @@
 #include <ESP8266WiFi.h>
 
 // Static IP details
-IPAddress local_IP(192, 168, 0, 50);
+IPAddress local_IP(192, 168, 0, 51);
 IPAddress gateway(192, 168, 0, 1);
 IPAddress subnet(255, 255, 255, 0);
 IPAddress dns(8, 8, 8, 8);
-
-
-
 const char* ssid = "VenbaACT";
 const char* password = "9655514937";
 
