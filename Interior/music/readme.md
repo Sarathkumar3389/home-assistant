@@ -30,3 +30,12 @@ mpc play config:
 sudo nano /etc/mpd.conf
 
 
+# For CLI based app
+sudo apt install ncmpcpp
+ncmpcpp
+
+# For sorting/deleting local songs
+'sudo apt install cmus'
+':add ~/Music'
+'save'
+
