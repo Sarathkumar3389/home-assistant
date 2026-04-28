@@ -39,3 +39,7 @@ ncmpcpp
 ':add ~/Music'
 'save'
 
+# Sorting Local Music
+install cmus 
+
+
