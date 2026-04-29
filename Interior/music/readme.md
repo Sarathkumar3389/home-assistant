@@ -39,7 +39,5 @@ ncmpcpp
 ':add ~/Music'
 'save'
 
-# Sorting Local Music
-install cmus 
-
-
+# Delete Duplicate songs
+rdfind -deleteduplicates true /Folder
