@@ -227,6 +227,7 @@ view:
 | 192.168.0.30  | Raspberry Pi 5            | Home Assistant Server            |
 | 192.168.0.40  | Raspberry Pi 4            | Home Assistant Display           |
 | 192.168.0.50  | Raspberry Pi 3            | Speaker / Relay Testing          |
+| 192.168.0.60  | Vu TV Ethernet            | Vu TV in HAL Ethernet            |
 | 192.168.0.100 | ESP WiFi Test             | ESP development and testing      |
 | 192.168.0.101 | ESP WiFi Motor Control    | Motor control system             |
 | 192.168.0.200 | Parking Camera            | CCTV / Parking surveillance      |
