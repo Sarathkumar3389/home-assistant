@@ -218,15 +218,42 @@ view:
 3. In HA, 
   Settings → Devices & Services → Services → search “notify”
 
+# Home Network IP Allocation
+| IP Address    | Device                    | Purpose                         |
+| ------------- | ------------------------- | ------------------------------- |
+| 192.168.0.1   | TP-Link Router            | Main router and DHCP server     |
+| 192.168.0.10  | MacBook (Frigate)         | Laptop running Frigate services |
+| 192.168.0.20  | Raspberry Pi 5            | Desktop / Development system    |
+| 192.168.0.30  | Raspberry Pi 5            | Home Assistant Server           |
+| 192.168.0.40  | Raspberry Pi 4            | Home Assistant Display          |
+| 192.168.0.50  | ESP WiFi Test             | ESP development and testing     |
+| 192.168.0.51  | ESP WiFi Motor Controller | Motor control system            |
+| 192.168.0.60  | Raspberry Pi 3            | Speaker / Audio server          |
+| 192.168.0.200 | Parking Camera            | CCTV / Parking surveillance     |
 
-# HW IP Information
 
-192.168.0.10 - macbook - Frigate
-192.168.0.11 - RPi3 - Speaker
-192.168.0.12 - RPi5 - desktop
-192.168.0.16 - RPi4 - HMI Display
-192.168.0.18 - RPi5 - HA server
-192.168.0.50 - ESPWIFI-test
-192.168.0.51 - ESPWIDI - Motor 
+## Command for setting permanent IP
+'''
+sudo nmcli connection modify "Wired connection 1" \
+ipv4.addresses 192.168.0.10/24 \
+ipv4.gateway 192.168.0.1 \
+ipv4.dns "192.168.0.1 8.8.8.8" \
+ipv4.method manual
+'''
 
+'''
+sudo nmcli connection down "Wired connection 1"
+sudo nmcli connection up "Wired connection 1" 
+'''
 
+# Command for setting static IP for HA server
+'''
+ha network update end0 \
+  --ipv4-method static \
+  --ipv4-address 192.168.0.30/24 \
+  --ipv4-gateway 192.168.0.1 \
+  --ipv4-nameserver 192.168.0.1
+'''
+'''
+ ha network reload
+'''
