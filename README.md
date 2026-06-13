@@ -219,17 +219,17 @@ view:
   Settings → Devices & Services → Services → search “notify”
 
 # Home Network IP Allocation
-| IP Address    | Device                    | Purpose                         |
-| ------------- | ------------------------- | ------------------------------- |
-| 192.168.0.1   | TP-Link Router            | Main router and DHCP server     |
-| 192.168.0.10  | MacBook (Frigate)         | Laptop running Frigate services |
-| 192.168.0.20  | Raspberry Pi 5            | Desktop / Development system    |
-| 192.168.0.30  | Raspberry Pi 5            | Home Assistant Server           |
-| 192.168.0.40  | Raspberry Pi 4            | Home Assistant Display          |
-| 192.168.0.50  | ESP WiFi Test             | ESP development and testing     |
-| 192.168.0.51  | ESP WiFi Motor Controller | Motor control system            |
-| 192.168.0.60  | Raspberry Pi 3            | Speaker / Audio server          |
-| 192.168.0.200 | Parking Camera            | CCTV / Parking surveillance     |
+| IP Address    | Device                    | Purpose                          |
+| ------------- | ------------------------- | ---------------------------------|
+| 192.168.0.1   | TP-Link Router            | Main router and DHCP server      |
+| 192.168.0.10  | MacBook (Frigate)         | Laptop running Frigate services  |
+| 192.168.0.20  | Raspberry Pi 5            | Desktop / Development system     |
+| 192.168.0.30  | Raspberry Pi 5            | Home Assistant Server            |
+| 192.168.0.40  | Raspberry Pi 4            | Home Assistant Display           |
+| 192.168.0.50  | Raspberry Pi 3            | Speaker / Relay Testing          |
+| 192.168.0.100 | ESP WiFi Test             | ESP development and testing      |
+| 192.168.0.101 | ESP WiFi Motor Control    | Motor control system             |
+| 192.168.0.200 | Parking Camera            | CCTV / Parking surveillance      |
 
 
 ## Command for setting permanent IP
