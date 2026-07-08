@@ -7,4 +7,4 @@ sudo apt install mosquitto-clients
 
 crontab -e
 
-* * * * * /home/sarathkumar/home-assistant/ha/temp_monitor/publish_rpi_desktop.sh >/dev/null 2>&1
+* * * * * /home/sarathkumar/home-assistant/ha/rpi/publish_rpi_desktop.sh
