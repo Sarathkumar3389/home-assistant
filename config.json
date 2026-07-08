@@ -1,0 +1,55 @@
+{
+    "mqtt": {
+        "host": "192.168.0.30",
+        "port": 1883,
+        "username": "mqtt",
+        "password": "9655514937"
+    },
+
+    "devices": {
+        "macbook": {
+            "hostname": "macbook",
+            "ip": "192.168.0.10"
+        },
+
+        "homeassistant": {
+            "hostname": "rpi5haserver",
+            "ip": "192.168.0.30"
+        },
+
+        "rpi5desktop": {
+            "hostname": "rpi5desktop",
+            "ip": "192.168.0.20"
+        },
+
+        "display": {
+            "hostname": "rpi5display",
+            "ip": "192.168.0.40"
+        },
+
+        "speaker": {
+            "hostname": "rpi3-speaker",
+            "ip": "192.168.0.50"
+        },
+
+        "router": {
+            "hostname": "act-tplink",
+            "ip": "192.168.0.1"
+        },
+
+        "esp_test": {
+            "hostname": "esp-test",
+            "ip": "192.168.0.100"
+        },
+
+        "esp_motor": {
+            "hostname": "esp-motor",
+            "ip": "192.168.0.101"
+        },
+
+        "parking_camera": {
+            "hostname": "parking-camera",
+            "ip": "192.168.0.200"
+        }
+    }
+}
