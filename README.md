@@ -258,3 +258,7 @@ ha network update end0 \
 '''
  ha network reload
 '''
+
+# Backup
+## Backup phone photos to external drivers in Mirror Drives
+rsync -aHAXvhP --stats "/mnt/sda1/Photos_2026_Jan_June/" "/mnt/external_device/"
