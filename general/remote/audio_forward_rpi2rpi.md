@@ -108,3 +108,13 @@ pactl get-default-sink
 
 ### start it before login 
 sudo loginctl enable-linger "$USER"
+
+
+### to control volume from Sender
+pactl set-sink-volume pi3_audio +5%
+
+### to control volume from reciever
+alsamixer
+
+
+
