@@ -12,8 +12,8 @@ from config_loader import get_device_config
 
 # --- CONFIGURATION ---
 DEVICE_KEY = "tapo_maccharger"
-LOW_THRESHOLD = 20                 # Turn ON charger at or below this %
-HIGH_THRESHOLD = 80                # Turn OFF charger at or above this %
+LOW_THRESHOLD = 45                 # Turn ON charger at or below this %
+HIGH_THRESHOLD = 75                # Turn OFF charger at or above this %
 # ---------------------
 
 def get_battery_info():
