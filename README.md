@@ -221,7 +221,9 @@ view:
 # Home Network IP Allocation
 | IP Address    | Device                    | Purpose                          |
 | ------------- | ------------------------- | ---------------------------------|
-| 192.168.0.1   | TP-Link Router            | Main router and DHCP server      |
+| 192.168.0.1   | TP-Link Router-Archer-C5  | Main router and DHCP server      |
+| 192.168.0.2   | DR-Link Router- DIR-615   | Second router wifi extender      |
+| 192.168.0.3   | TP-Link Sim Router-MR6400 | WORK Router with SIM             |
 | 192.168.0.10  | MacBook (Frigate)         | Laptop running Frigate services  |
 | 192.168.0.20  | Raspberry Pi 5            | Desktop / Development system     |
 | 192.168.0.30  | Raspberry Pi 5            | Home Assistant Server            |
@@ -230,6 +232,7 @@ view:
 | 192.168.0.60  | Vu TV Ethernet            | Vu TV in HAL Ethernet            |
 | 192.168.0.100 | ESP WiFi Test             | ESP development and testing      |
 | 192.168.0.101 | ESP WiFi Motor Control    | Motor control system             |
+| 192.168.0.120 | Tapo-110 Smart Plug       | Macbook charger control          |
 | 192.168.0.200 | Parking Camera            | CCTV / Parking surveillance      |
 
 
