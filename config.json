@@ -7,56 +7,94 @@
     },
 
     "devices": {
+        "router_act": {
+            "hostname": "act-tplink",
+            "ip": "192.168.0.1",
+            "device": "TP-Link Router-Archer-C5",
+            "purpose": "Main router and DHCP server"
+        },
+        "router_extender_1": {
+            "hostname": "dlink-dir615",
+            "ip": "192.168.0.2",
+            "device": "D-Link Router-DIR-615",
+            "purpose": "Second router wifi extender"
+        },
+        "router_sim": {
+            "hostname": "tplink-mr6400",
+            "ip": "192.168.0.3",
+            "device": "TP-Link Sim Router-MR6400",
+            "purpose": "WORK Router with SIM"
+        },
         "macbook": {
             "hostname": "macbook",
-            "ip": "192.168.0.10"
+            "ip": "192.168.0.10",
+            "device": "MacBook (Frigate)",
+            "purpose": "Laptop running Frigate services"
         },
 
-        "homeassistant": {
+       "homeassistant": {
             "hostname": "rpi5haserver",
-            "ip": "192.168.0.30"
+            "ip": "192.168.0.30",
+            "device": "Raspberry Pi 5",
+            "purpose": "Home Assistant Server"
         },
 
-        "rpi5desktop": {
+         "rpi5desktop": {
             "hostname": "rpi5desktop",
-            "ip": "192.168.0.20"
+            "ip": "192.168.0.20",
+            "device": "Raspberry Pi 5",
+            "purpose": "Desktop / Development system"
         },
 
         "display": {
             "hostname": "rpi5display",
-            "ip": "192.168.0.40"
+            "ip": "192.168.0.40",
+            "device": "Raspberry Pi 4",
+            "purpose": "Home Assistant Display"
         },
 
-        "speaker": {
+         "speaker": {
             "hostname": "rpi3-speaker",
-            "ip": "192.168.0.50"
+            "ip": "192.168.0.50",
+            "device": "Raspberry Pi 3",
+            "purpose": "Speaker / Relay Testing"
         },
 
-        "router": {
-            "hostname": "act-tplink",
-            "ip": "192.168.0.1"
+       "vu_tv": {
+            "hostname": "vu-tv",
+            "ip": "192.168.0.60",
+            "device": "Vu TV Ethernet",
+            "purpose": "Vu TV in Hall Ethernet"
         },
 
         "esp_test": {
             "hostname": "esp-test",
-            "ip": "192.168.0.100"
+            "ip": "192.168.0.100",
+            "device": "ESP WiFi Test",
+            "purpose": "ESP development and testing"
         },
 
         "esp_motor": {
             "hostname": "esp-motor",
-            "ip": "192.168.0.101"
+            "ip": "192.168.0.101",
+            "device": "ESP WiFi Motor Control",
+            "purpose": "Motor control system"
         },
 
         "tapo_maccharger": {
             "hostname": "tapo-maccharger",
             "ip": "192.168.0.120",
+            "device": "Tapo-110 Smart Plug",
+            "purpose": "Macbook charger control",
             "email": "sarathkumar3389@gmail.com",
             "password": "Sarath@1989"
         },
 
         "parking_camera": {
-            "hostname": "parking-camera",
-            "ip": "192.168.0.200"
+            "hostname": "parking-cam",
+            "ip": "192.168.0.200",
+            "device": "Parking Camera",
+            "purpose": "CCTV / Parking surveillance"
         }
     }
 }
